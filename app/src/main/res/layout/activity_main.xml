@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tv_location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="177dp"
+        android:capitalize="characters"
+        android:text="Location"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_dataInput"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="177dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="177dp"
+        android:capitalize="characters"
+        android:text="Belfast"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location_text"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="17 January 2022"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tv_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
+        android:text="09 : 20"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_fiveDayWeather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="10dp"
+        tools:listitem="@layout/rv_card_model"/>
+
+    <ImageView
+        android:id="@+id/ib_currentWeather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:scaleX="1.5"
+        android:scaleY="1.5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+
+        android:layout_marginEnd="100dp"
+        android:padding="5dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+    <TextView
+        android:id="@+id/tv_currentTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="0\u2103"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toStartOf="@+id/ib_currentWeather"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location" />
+
+    <EditText
+        android:id="@+id/et_dataInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="25dp"
+        android:ems="10"
+        android:hint="Enter a Location"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tempsCard"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginEnd="31dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location"
+        app:cardCornerRadius="20dp">
+
+
+        <GridLayout
+            android:id="@+id/layoutGrid"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:rowCount="2"
+            android:columnCount="2">
+
+            <RelativeLayout
+                android:id="@+id/gr_00"
+                android:layout_height="75dp"
+                android:layout_width="175dp">
+
+                <TextView
+                    android:id="@+id/grids_lowTemp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="LOWS"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/grids_lowTempValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/grids_lowTemp"
+                    android:gravity="center"
+                    android:text="0\u2103"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gr_01"
+                android:layout_height="75dp"
+                android:layout_width="175dp">
+
+                <TextView
+                    android:id="@+id/grids_highTemp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:text="HIGHS"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/grids_highTempValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/grids_highTemp"
+                    android:gravity="center"
+                    android:text="22\u2103"
+                    android:textSize="25sp"
+
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gr_10"
+                android:layout_height="75dp"
+                android:layout_width="175dp">
+
+                <TextView
+                    android:id="@+id/grids_Sunrise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:text="Sunrise"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/grids_sunriseValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/grids_Sunrise"
+                    android:gravity="center"
+                    android:text="08:44am"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gr_11"
+                android:layout_height="75dp"
+                android:layout_width="175dp">
+
+                <TextView
+                    android:id="@+id/grids_Sunset"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:text="Sunset"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/grids_sunsetValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/grids_Sunset"
+                    android:gravity="center"
+                    android:text="18:34pm"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+        </GridLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
